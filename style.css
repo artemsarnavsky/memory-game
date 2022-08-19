@@ -19,8 +19,8 @@ h1 {
   .box{
     width: 100px;
     height: 100px;
-    background: gold;
     border-radius: 10px;
+    background: center / cover aqua;
   }
   
   @media(min-width: 1100px){
