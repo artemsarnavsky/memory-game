@@ -57,14 +57,22 @@ for (let i = 0; i < playCards.length; i++) {
 
   }
 
-  
-
-
-
-
 	});
 }
 
 let array = [...cards, ...cards],
 	shuffleArray = array.sort(() => 0.5 - Math.random());
 
+	var sec = 0;
+	function initSec() {
+	  sec = 0;
+	  setInterval(tick, 1000);
+	}
+	
+	function tick() {
+	  sec++;
+	  let timer = document.getElementById("timer");
+	  timer.innerText = sec;
+	}
+	
+	initSec();

@@ -23,8 +23,21 @@ h1 {
     background: center / cover aqua;
   }
   
-  @media(min-width: 1100px){
-    .game{
-      width: 1080px;
-    }
+  .timer{
+    color: red;
+    font-size: 40px;
+    font-weight:80px;
+    margin: 10px;
+
   }
+
+
+  @media(min-width: 1000px){
+		.game{
+			width: 1080px;
+		}
+		.box{
+			width: 200px;
+			height: 200px;
+		}
+	}
