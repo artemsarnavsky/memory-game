@@ -54,6 +54,25 @@ for (let i = 0; i < playCards.length; i++) {
 					if (choosenCards[1]) playCards[choosenCardsId[1]].style.visibility = "hidden";
 					win.play();
 					points++;
+					 
+ 
+					if (sec.toString().substr(-1) == "1" && sec.toString().substr(0) != "1"){
+						document.getElementById("rst").innerText = `${result} секунду` ;
+					  }
+                      else if (sec.toString().substr(-1) == "2" && sec.toString().substr(-1) == "3" && sec.toString().substr(-1) == "4" && sec.toString().substr(0) != "1"){
+						document.getElementById("rst").innerText = ` ${result} секунди` ;
+					  }
+					  else{
+						document.getElementById("rst").innerText = ` ${result} секунд` ;
+					  }
+
+
+
+
+
+
+
+
 				}
 				else {
 					if (choosenCardsId[0]) playCards[choosenCardsId[0]].style.backgroundImage = "none";
