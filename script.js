@@ -56,15 +56,14 @@ for (let i = 0; i < playCards.length; i++) {
 					points++;
 					 
  
-					if (sec.toString().substr(-1) == "1" && sec.toString().substr(0) != "1"){
-						document.getElementById("rst").innerText = `${result} секунду` ;
+					if (sec % 10 === 2 || sec % 10 === 3 || sec % 10 === 4  ){
+						document.getElementById("rst").innerText = `${rst} секунди`
+					}
+                    
+					 else if (sec % 10 === 0 ) {
+						document.getElementById("rst").innerText = `${rst} секунд` ;
 					  }
-                      else if (sec.toString().substr(-1) == "2" && sec.toString().substr(-1) == "3" && sec.toString().substr(-1) == "4" && sec.toString().substr(0) != "1"){
-						document.getElementById("rst").innerText = ` ${result} секунди` ;
-					  }
-					  else{
-						document.getElementById("rst").innerText = ` ${result} секунд` ;
-					  }
+                   
 
 
 
