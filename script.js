@@ -1,5 +1,6 @@
 var music = new Audio('music.mp3');
-
+var win = new Audio("win.mp3")
+var lose = new Audio("lose.mp3")
 // масив карток
 const cards = [
 	{
@@ -51,12 +52,14 @@ for (let i = 0; i < playCards.length; i++) {
 
 					if (choosenCards[0]) playCards[choosenCardsId[0]].style.visibility = "hidden";
 					if (choosenCards[1]) playCards[choosenCardsId[1]].style.visibility = "hidden";
+					win.play();
 					points++;
 				}
 				else {
 					if (choosenCardsId[0]) playCards[choosenCardsId[0]].style.backgroundImage = "none";
 					if (choosenCardsId[1]) playCards[choosenCardsId[1]].style.backgroundImage = "none";
-				}
+                      lose.play() 
+				}  
 				if (choosenCards[0]) playCards[choosenCardsId[0]].style.backgroundColor = "#eee";
 				if (choosenCards[1]) playCards[choosenCardsId[1]].style.backgroundColor = "#eee";
 				choosenCards = [];
