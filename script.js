@@ -1,3 +1,6 @@
+var music = new Audio('music.mp3');
+
+
 // масив карток
 const cards = [
 	{
@@ -75,6 +78,17 @@ function initSec() {
 	setInterval(tick, 1000);
 }
 
+
+
+function music() {
+	var audio = new Audio();
+	audio.src = "music.mp3";
+	audio.autoplay = true; 
+  }
+
+
+
+
 function tick() {
 	if (points < 5) sec++;
 	let timer = document.getElementById("timer");
@@ -86,6 +100,7 @@ function tick() {
 }
 
 initSec();
+
 
 
 localStorage.setItem('bgColor', 'purple');
