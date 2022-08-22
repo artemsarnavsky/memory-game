@@ -1,3 +1,6 @@
+var music = new Audio('music.mp3');
+var win = new Audio("win.mp3")
+var lose = new Audio("lose.mp3")
 // масив карток
 const cards = [
 	{
@@ -23,48 +26,100 @@ const cards = [
 		img: "https://github.com/robgmerrill/img/blob/master/sass-logo.png?raw=true"
 	}
 ];
+// додаткові масиви
+var choosenCards = [];
+var choosenCardsId = [];
+var points = 0;
 
-var  choosenCards = [];
-var  choosenCardsId = [];
 
-
-
+// перебираємо картки
 var playCards = document.querySelectorAll("div.box");
 for (let i = 0; i < playCards.length; i++) {
-	playCards[i].setAttribute("id", i); // встановлюємо id для кожної картки
+	playCards[i].setAttribute("id", i); // 
 	playCards[i].addEventListener("click", function () {
-	this.style.backgroundImage = `url(${shuffleArray[i].img})`;
-  choosenCards.push(shuffleArray[this.id].name)
-  choosenCardsId.push(this.id)
-  if (choosenCards.length === 2) {
-    console.log("check")
-     setTimeout(function(){
-      if (choosenCards[0] === choosenCards[1]){
-      playCards[choosenCardsId[0]].style.visibility = "hidden"
-      playCards[choosenCardsId[1]].style.visibility = "hidden"
-  }
 
-  else {
-     playCards[choosenCardsId[0]].style.backgroundImage = "none"
-     playCards[choosenCardsId[1]].style.backgroundImage = "none"
+		if (choosenCardsId.every(item => item !== this.id) && choosenCards.length < 2) {
+			choosenCards.push(shuffleArray[this.id].name) // 
+			choosenCardsId.push(this.id)	// 
+			this.style.backgroundImage = `url(${shuffleArray[i].img})`; 
+			this.style.backgroundColor = "rgb(126, 196, 56)";
+		}
+		// якщо в масивах дві картки...
 
-  }
-  choosenCards = [];
-  choosenCardsId = [];
+		if (choosenCards.length === 2) {
+			setTimeout(function () { 
+				if (choosenCards[0] === choosenCards[1]) {
+
+					if (choosenCards[0]) playCards[choosenCardsId[0]].style.visibility = "hidden";
+					if (choosenCards[1]) playCards[choosenCardsId[1]].style.visibility = "hidden";
+					win.play();
+					points++;
+					 
+ 
+					if (sec % 10 === 2 || sec % 10 === 3 || sec % 10 === 4  ){
+						document.getElementById("rst").innerText = `${rst} секунди`
+					}
+                    
+					 else if (sec % 10 === 0 ) {
+						document.getElementById("rst").innerText = `${rst} секунд` ;
+					  }
+                   
 
 
-     }, 500);
-
-  }
-
-  
 
 
 
 
+
+
+				}
+				else {
+					if (choosenCardsId[0]) playCards[choosenCardsId[0]].style.backgroundImage = "none";
+					if (choosenCardsId[1]) playCards[choosenCardsId[1]].style.backgroundImage = "none";
+                      lose.play() 
+				}  
+				if (choosenCards[0]) playCards[choosenCardsId[0]].style.backgroundColor = "#eee";
+				if (choosenCards[1]) playCards[choosenCardsId[1]].style.backgroundColor = "#eee";
+				choosenCards = [];
+				choosenCardsId = [];
+			}, 1000)
+		}
+		console.log(choosenCards);
 	});
 }
 
 let array = [...cards, ...cards],
 	shuffleArray = array.sort(() => 0.5 - Math.random());
 
+// cекундомір
+var sec = 0;
+function initSec() {
+	sec = 0;
+	setInterval(tick, 1000);
+}
+
+
+
+function audio() {
+	var audio = new Audio("music.mp3.mp3");
+	audio.src = "music.mp3.mp3";
+	audio.autoplay = true; 
+  }
+
+
+
+function tick() {
+	if (points < 5) sec++;
+	let timer = document.getElementById("timer");
+	if (points < 5) timer.innerText = sec;
+	else
+		if (sec % 10 === 1) timer.innerText = sec + " секунда!";
+		else if (sec % 10 === 2 && sec % 10 === 3 && sec % 10 === 4) timer.innerText = sec + " секунди!";
+		else timer.innerText = sec + " секунд!";
+}
+
+initSec();
+
+
+
+localStorage.setItem('bgColor', 'purple');
