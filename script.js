@@ -1,6 +1,5 @@
 var music = new Audio('music.mp3');
 
-
 // масив карток
 const cards = [
 	{
@@ -80,12 +79,11 @@ function initSec() {
 
 
 
-function music() {
-	var audio = new Audio();
-	audio.src = "music.mp3";
+function audio() {
+	var audio = new Audio("music.mp3.mp3");
+	audio.src = "music.mp3.mp3";
 	audio.autoplay = true; 
   }
-
 
 
 
